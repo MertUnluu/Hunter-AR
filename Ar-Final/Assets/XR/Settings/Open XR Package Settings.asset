@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
   m_Name: Android
   m_EditorClassIdentifier: 
-  features: []
+  features:
+  - {fileID: -1485893352812492907}
+  - {fileID: -5140347088525396905}
+  - {fileID: -1548349953733600601}
+  - {fileID: -1345505363185844447}
+  - {fileID: 6178866643059200167}
+  - {fileID: -4288441101903930945}
+  - {fileID: 4152970930274920894}
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &-7865320255151649905
