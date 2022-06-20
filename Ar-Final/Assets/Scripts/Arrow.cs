@@ -10,6 +10,8 @@ public class Arrow : MonoBehaviour
         if (collision.gameObject.CompareTag("Target") || collision.gameObject.CompareTag("Balloon"))
         {
             Debug.Log("ZURT");
+            GameManager_HunterAR.Instance.score += 1;
+            GameManager_HunterAR.Instance.RemoveFromList(collision.gameObject);
             Destroy(collision.gameObject);
             Destroy(this);
         }
