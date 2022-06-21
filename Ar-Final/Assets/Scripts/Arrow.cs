@@ -6,14 +6,24 @@ public class Arrow : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("ZORT");
-        if (collision.gameObject.CompareTag("Target") || collision.gameObject.CompareTag("Balloon"))
+        if (collision.gameObject.CompareTag("Target"))
         {
-            Debug.Log("ZURT");
-            GameManager_HunterAR.Instance.score += 1;
-            GameManager_HunterAR.Instance.RemoveFromList(collision.gameObject);
-            Destroy(collision.gameObject);
-            Destroy(this);
+            ArrowHit(collision.gameObject);
+            GameManagerHunterAR.Instance.PlaySound(SoundType.ARROW);
         }
+        else if (collision.gameObject.CompareTag("Balloon"))
+        {
+            GameObject ballonParticle = Instantiate(GameManagerHunterAR.Instance.balloonParticlePrefab, collision.gameObject.transform);
+            ArrowHit(collision.gameObject);
+            GameManagerHunterAR.Instance.PlaySound(SoundType.BALLOON);
+        }
+    }
+
+    void ArrowHit(GameObject collidedObject)
+    {
+        GameManagerHunterAR.Instance.score += 1;
+        GameManagerHunterAR.Instance.RemoveFromList(collidedObject);
+        Destroy(collidedObject);
+        Destroy(this);
     }
 }

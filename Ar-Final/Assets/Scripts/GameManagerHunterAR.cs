@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameManager_HunterAR : MonoSingleton<GameManager_HunterAR>
+public class GameManagerHunterAR : MonoSingleton<GameManagerHunterAR>
 {
     [SerializeField] public int score;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -12,6 +13,8 @@ public class GameManager_HunterAR : MonoSingleton<GameManager_HunterAR>
     [SerializeField] private GameObject balloonPrefab;
     [SerializeField] private List<GameObject> gameObjects;
     public Transform ArOrigin;
+    public GameObject balloonParticlePrefab;
+    [SerializeField] private AudioSource[] sounds;
 
 
     // Start is called before the first frame update
@@ -36,7 +39,7 @@ public class GameManager_HunterAR : MonoSingleton<GameManager_HunterAR>
         if (randomZort < .5f)
         {
             float randomX = Random.Range(-10, 10);
-            float randomY =Random.Range(-5, 5);
+            float randomY = Random.Range(-5, 5);
             float randomZ = Random.Range(-10, 10);
             GameObject obj = Instantiate(targetPrefab, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
             gameObjects.Add(obj);
@@ -53,6 +56,28 @@ public class GameManager_HunterAR : MonoSingleton<GameManager_HunterAR>
 
     public void RemoveFromList(GameObject ObjectToRemove)
     {
+        gameObjects.Remove(ObjectToRemove);
+    }
+
+    public void PlaySound(SoundType soundType)
+    {
+        sounds[(int)soundType].Play();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void PauseGame()
+    {
 
     }
+}
+
+public enum SoundType
+{
+    BOW,
+    ARROW,
+    BALLOON
 }

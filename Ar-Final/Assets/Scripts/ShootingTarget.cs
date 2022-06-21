@@ -15,7 +15,7 @@ public class ShootingTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        arOrigin = GameManager_HunterAR.Instance.ArOrigin;
+        arOrigin = GameManagerHunterAR.Instance.ArOrigin;
         transform = GetComponent<Transform>();
         randomFlyTÝme = Random.Range(2.0f, 4.0f);
         directionX = Random.value > 0.5f ? 1 : -1;

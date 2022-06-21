@@ -46,5 +46,6 @@ public class Bow : MonoBehaviour
         GameObject arrow = Instantiate(arrowPrefab, arrowLocation);
         Rigidbody arrowRB = arrow.GetComponent<Rigidbody>();
         arrowRB.AddForce(-transform.forward * force, ForceMode.Impulse);
+        GameManagerHunterAR.Instance.PlaySound(SoundType.BOW);
     }
 }
