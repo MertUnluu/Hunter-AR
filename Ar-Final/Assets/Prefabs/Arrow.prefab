@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14025ca9dc1dc1408254eeefb6baf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balloonParticlePrefab: {fileID: 1253146012618152154, guid: b609363afb7f84545a07bec4aab20ad1,
+    type: 3}
 --- !u!1 &6123478363640518393
 GameObject:
   m_ObjectHideFlags: 0

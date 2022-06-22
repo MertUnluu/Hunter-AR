@@ -14,6 +14,7 @@ public class GameManagerHunterAR : MonoSingleton<GameManagerHunterAR>
     [SerializeField] private List<GameObject> gameObjects;
     public Transform ArOrigin;
     public GameObject balloonParticlePrefab;
+    [SerializeField] private Animator panelAnimator;
     [SerializeField] private AudioSource[] sounds;
 
 
@@ -64,7 +65,13 @@ public class GameManagerHunterAR : MonoSingleton<GameManagerHunterAR>
         sounds[(int)soundType].Play();
     }
 
-    public void BackToMenu()
+    public void HomeButton()
+    {
+        panelAnimator.SetTrigger("Reverse");
+        Invoke("MenuReturn", 1.2f);
+    }
+
+    void MenuReturn()
     {
         SceneManager.LoadScene("Menu");
     }

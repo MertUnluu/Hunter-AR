@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private Animator panelAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,12 @@ public class MenuManager : MonoBehaviour
     }
 
     public void PlayGame()
+    {
+        panelAnimator.SetTrigger("Reverse");
+        Invoke("OpenGame", 1.2f);
+    }
+
+    void OpenGame()
     {
         SceneManager.LoadScene("Game");
     }
