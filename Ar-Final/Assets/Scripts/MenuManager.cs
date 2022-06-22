@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Animator panelAnimator;
+    [SerializeField] private GameObject creditsUI;
+    [SerializeField] private GameObject menuUI;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,14 @@ public class MenuManager : MonoBehaviour
 
     public void OpenCredits()
     {
+        menuUI.SetActive(false);
+        creditsUI.SetActive(true);
+    }
 
+    public void BackToMenu()
+    {
+        creditsUI.SetActive(false);
+        menuUI.SetActive(true);
     }
 
     public void QuitGame()

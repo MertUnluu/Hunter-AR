@@ -6,6 +6,11 @@ public class Arrow : MonoBehaviour
 {
     [SerializeField] private GameObject balloonParticlePrefab;
 
+    private void Start()
+    {
+        GameManagerHunterAR.Instance.PlaySound(SoundType.BOW);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Target"))

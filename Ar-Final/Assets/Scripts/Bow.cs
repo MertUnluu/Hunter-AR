@@ -23,13 +23,15 @@ public class Bow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, followPoint.position, Time.deltaTime * speed);
         transform.rotation = followPoint.rotation;
 
-
-        if (Input.touchCount == 1)
+        if (GameManagerHunterAR.Instance.GamePaused == false)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Ended)
+            if (Input.touchCount == 1)
             {
-                Shoot(shootSlider.value);
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    Shoot(shootSlider.value);
+                }
             }
         }
 
@@ -46,6 +48,5 @@ public class Bow : MonoBehaviour
         GameObject arrow = Instantiate(arrowPrefab, arrowLocation);
         Rigidbody arrowRB = arrow.GetComponent<Rigidbody>();
         arrowRB.AddForce(-transform.forward * force, ForceMode.Impulse);
-        GameManagerHunterAR.Instance.PlaySound(SoundType.BOW);
     }
 }

@@ -14,6 +14,9 @@ public class GameManagerHunterAR : MonoSingleton<GameManagerHunterAR>
     [SerializeField] private List<GameObject> gameObjects;
     public Transform ArOrigin;
     public GameObject balloonParticlePrefab;
+    public bool GamePaused = false;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameUI;
     [SerializeField] private Animator panelAnimator;
     [SerializeField] private AudioSource[] sounds;
 
@@ -78,7 +81,18 @@ public class GameManagerHunterAR : MonoSingleton<GameManagerHunterAR>
 
     public void PauseGame()
     {
+        GamePaused = true;
+        pauseMenu.SetActive(true);
+        gameUI.SetActive(false);
+        Time.timeScale = 0.0f;
+    }
 
+    public void ContinueGame()
+    {
+        GamePaused = false;
+        pauseMenu?.SetActive(false);
+        gameUI.SetActive(true);
+        Time.timeScale = 1.0f;
     }
 }
 
